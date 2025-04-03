@@ -1,46 +1,43 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+![CI](https://github.com/duythinh96/n8n-nodes-chatwork/workflows/CI/badge.svg)
 
-# n8n-nodes-starter
+# n8n-nodes-chatwork-api
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+![n8n.io - Workflow Automation](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png)
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+This is a n8n community node. It lets you use ChatWork in your n8n workflows.
 
-## Prerequisites
+## Installation
 
-You need the following installed on your development machine:
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+## Operations/Apis
 
-## Using this starter
+- `/me` - Used to access your account information
+  - [x] `GET /me` - Get your account information
+- `/my` - Used to access your data on the account.
+  - [x] `GET /my/status` - Get the number of: unread messages, unread To messages, and unfinished tasks.
+  - [x] `GET /my/task` - Get the list of all unfinished tasks.
+- `/contacts` - Used to access the list of your contacts
+  - [x] `GET /contacts` - Get the list of your contacts
+- `/rooms` - Used to access information such as messages, members, files, and tasks associated to a specific conversation.
+  - [x] `GET /rooms` - Get the list of all chats on your account
+  - [x] `POST /rooms` - Create a new group chat
+  - [x] `GET /rooms/{room_id}` - Get chat name, icon, and Type (my, direct, or group)
+  - [x] `PUT /rooms/{room_id}` - Change the title and icon type of the specified chat
+  - [x] `DELETE /rooms/{room_id}` - Leave/Delete a group chat
+  - [x] `GET /rooms/{room_id}/members` - Get the list of all chat members associated with the specified chat
+  - [x] `PUT /rooms/{room_id}/members` - Change associated members of group chat at once
+  - [x] `GET /rooms/{room_id}/messages` - Get all messages associated with the specified chat
+  - [x] `POST /rooms/{room_id}/messages` - Add new message to the chat
+  - [x] `GET /rooms/{room_id}/messages/{message_id}` - Get information about the specified message
+  - [x] `PUT /rooms/{room_id}/messages/{message_id}` - Update the specified message
+  - [x] `DELETE /rooms/{room_id}/messages/{message_id}` - Delete the specified message
+  - [x] `GET /rooms/{room_id}/tasks` - Get the list of tasks associated with the specified chat
+  - [x] `POST /rooms/{room_id}/tasks` - Add a new task to the chat
+  - [x] `GET /rooms/{room_id}/tasks/{task_id}` - Get information about the specified task
+  - [x] `GET /rooms/{room_id}/files` - Get the list of files associated with the specified chat
+  - [x] `GET /rooms/{room_id}/files/{file_id}` - Get information about the specified file
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## Credentials
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
-
-## More information
-
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
-
-## License
-
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+- [ChatWork Api Key](https://help.chatwork.com/hc/ja/articles/115000172402-API%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E7%99%BA%E8%A1%8C%E3%81%99%E3%82%8B)
